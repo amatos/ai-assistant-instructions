@@ -65,3 +65,22 @@ provider "proxmox" {
 - **Environment Variables**: CI/CD secrets or local .env (never committed)
 - **AWS Secrets Manager / Parameter Store**: For AWS deployments
 - **SSH Agent**: Agent forwarding only, never commit keys
+
+### macOS Keychain Reuse
+
+**Each keychain read triggers a password approval prompt.** Fetch the secret
+once into a shell variable, then inject the variable into every command that
+needs it. Never inline `$(security find-generic-password ...)` in each command.
+
+```bash
+# WRONG — prompts on every command
+TF_VAR_anthropic_key=$(security find-generic-password -s ANTHROPIC_API_KEY -w) terragrunt plan
+TF_VAR_anthropic_key=$(security find-generic-password -s ANTHROPIC_API_KEY -w) terragrunt apply
+
+# CORRECT — one prompt, then inject the variable
+ANTHROPIC_API_KEY=$(security find-generic-password -s ANTHROPIC_API_KEY -w)
+TF_VAR_anthropic_key=$ANTHROPIC_API_KEY terragrunt plan
+TF_VAR_anthropic_key=$ANTHROPIC_API_KEY terragrunt apply
+```
+
+Applies to any keychain-backed secret and any `security find-*-password` invocation.
