@@ -1,49 +1,23 @@
 ---
 name: secrets-policy
-description: Never commit secrets, credentials, or sensitive data — use variable references; keep private repo identifiers out of public docs and READMEs
-paths:
-  - "**/.env*"
-  - "**/*.json"
-  - "**/*.yaml"
-  - "**/*.yml"
-  - "**/*.toml"
-  - "**/*.tf"
-  - "**/*.tfvars"
-  - "**/*.nix"
-  - "**/Makefile"
-  - "**/.github/**"
-  - "**/docker-compose*"
-  - "**/Dockerfile*"
-  - "**/*.md"
-  - "**/*.mdx"
-  - "README*"
-  - "docs/**"
+description: No secrets, person-specific defaults, or private-repo IDs in commits. Cross-repo PUBLIC docs go to docs.jacobpevans.com. Use placeholders for anything tied to one user.
 ---
 
 # Secrets Policy
 
-**CRITICAL**: Never commit sensitive data to git.
-All git-committed files must use scrubbed values and variable references.
+Never commit: tokens, credentials, SSH keys, real IPs/hostnames/domains,
+AWS account IDs, user-specific paths, or person-specific defaults. Use
+placeholders or variables for anything tied to one user — every committed
+value should work for any person who clones the repo right now.
 
-## What NOT to Commit
+Cross-repo PUBLIC documentation lives at
+[`docs.jacobpevans.com`](https://docs.jacobpevans.com)
+(source: [`github.com/JacobPEvans/docs`](https://github.com/JacobPEvans/docs)).
+Per-repo docs stay in the repo's `README.md` and `docs/`. Private repos
+never appear there — verify with `gh repo view OWNER/REPO --json visibility`
+when in doubt.
 
-- API tokens, credentials, passwords
-- Real IP addresses (internal or external)
-- Real domain names or hostnames
-- SSH private keys or certificates
-- Database credentials
-- AWS account IDs, ARNs, or API keys
-- Encryption keys or secrets
-- User-specific absolute paths
-
-## Public vs Private Repository Separation
-
-Never reference private repos (names, features, tools) in public repo content.
-If a repo is private, treat it as if it doesn't exist when writing public-facing
-docs, sites, or READMEs.
-This includes repo names, project descriptions, architecture diagrams, and any
-identifying details.
-
-When updating public-facing content (GitHub Pages sites, public READMEs,
-portfolios), audit for any mentions of private repositories before committing.
-Use `gh repo view OWNER/REPO` to check visibility when in doubt.
+Never write a real value even in a "wrong" example — the example becomes
+committed text. Use shape stand-ins: `${USER}`, `${REPO_ROOT}`,
+`${MAINTAINER_EMAIL}`, `${NAS_HOST}`, `<redacted>`. See `config-secrets.md`
+for the canonical scrubbed-value table and runtime injection methods.

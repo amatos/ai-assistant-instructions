@@ -15,6 +15,10 @@ paths:
 
 # Config File Secrets
 
+See `secrets-policy.md` for the broader posture and the canonical
+cross-repo PUBLIC docs target
+([docs.jacobpevans.com](https://docs.jacobpevans.com)).
+
 ## Scrubbed Values
 
 | Type | Scrubbed Value | Examples |
