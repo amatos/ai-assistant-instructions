@@ -74,7 +74,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 <!-- END external:karpathy -->
 <!-- markdownlint-enable MD013 MD025 MD031 MD032 MD040 -->
 
-Plugins, commands, skills, agents, hooks: [JacobPEvans/claude-code-plugins](https://github.com/JacobPEvans/claude-code-plugins).
+Plugins, commands, skills, agents, hooks: [amatos/claude-code-plugins](https://github.com/amatos/claude-code-plugins).
 
 ## No Scripts
 
@@ -96,14 +96,14 @@ The AI configuration layer spans three repos. Know which one owns the change bef
 
 | Owns | Repo |
 | --- | --- |
-| Auto-loaded rules, AGENTS.md, workflows, permission JSON | [`JacobPEvans/ai-assistant-instructions`](https://github.com/JacobPEvans/ai-assistant-instructions) |
-| Slash commands, skills, agents, hooks (marketplace-installed) | [`JacobPEvans/claude-code-plugins`](https://github.com/JacobPEvans/claude-code-plugins) |
-| Public-facing reference site at [`docs.jacobpevans.com`](https://docs.jacobpevans.com) | [`JacobPEvans/docs`](https://github.com/JacobPEvans/docs) |
+| Auto-loaded rules, AGENTS.md, workflows, permission JSON | [`amatos/ai-assistant-instructions`](https://github.com/amatos/ai-assistant-instructions) |
+| Slash commands, skills, agents, hooks (marketplace-installed) | [`amatos/claude-code-plugins`](https://github.com/amatos/claude-code-plugins) |
+| Public-facing reference site at [`docs.matos.cc`](https://docs.matos.cc) | [`amatos/docs`](https://github.com/amatos/docs) |
 
 Canonical "what lives where" with diagram and lifecycle:
-[`docs.jacobpevans.com/ai-development/repo-boundaries`](https://docs.jacobpevans.com/ai-development/repo-boundaries).
+[`docs.matos.cc/ai-development/repo-boundaries`](https://docs.matos.cc/ai-development/repo-boundaries).
 
-When a change in one repo affects the public picture, mirror the relevant slice into `JacobPEvans/docs`
+When a change in one repo affects the public picture, mirror the relevant slice into `amatos/docs`
 in the same session — never leave it to a follow-up:
 
 - Plugin added, removed, or scope shifted → update `docs/ai-development/claude-code-plugins.mdx`
@@ -112,9 +112,9 @@ in the same session — never leave it to a follow-up:
   `docs/ai-development/ai-assistant-instructions.mdx`.
 - Diagram edits → keep inline mermaid blocks and any `docs/assets/*.mmd` sources in lockstep
   per `diagramming.md`.
-- One PR per repo. Cross-link via `Refs: JacobPEvans/<repo>#N` in the PR body.
+- One PR per repo. Cross-link via `Refs: amatos/<repo>#N` in the PR body.
 - Per-repo docs (the local `README.md` and `docs/` inside any source repo) stay in that repo.
-  Private/user-only content never goes in `JacobPEvans/docs`.
+  Private/user-only content never goes in `amatos/docs`.
 
 The docs site is descriptive (written for humans and AI readers); agent directives like this one
 stay in `AGENTS.md`.

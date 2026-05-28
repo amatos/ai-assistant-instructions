@@ -138,7 +138,7 @@ These patterns are violations of this rule, regardless of how they are framed:
 ```yaml
 # WRONG: nix develop round-trip per commit
 - id: tofu-test
-  entry: nix develop github:JacobPEvans/nix-devenv?dir=shells/terraform --command bash -c "tofu test"
+  entry: nix develop github:amatos/nix-devenv?dir=shells/terraform --command bash -c "tofu test"
 ```
 
 ```yaml

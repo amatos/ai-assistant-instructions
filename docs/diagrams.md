@@ -2,10 +2,10 @@
 
 ## Ecosystem Context
 
-Where `ai-assistant-instructions` fits within the broader JacobPEvans nix-ai system.
-Companion repos: [`claude-code-plugins`](https://github.com/JacobPEvans/claude-code-plugins)
-delivers the plugins, and [`docs`](https://github.com/JacobPEvans/docs) hosts the public
-reference site at [`docs.jacobpevans.com`](https://docs.jacobpevans.com).
+Where `ai-assistant-instructions` fits within the broader amatos nix-ai system.
+Companion repos: [`claude-code-plugins`](https://github.com/amatos/claude-code-plugins)
+delivers the plugins, and [`docs`](https://github.com/amatos/docs) hosts the public
+reference site at [`docs.alberthmatos.com`](https://docs.alberthmatos.com).
 
 ```mermaid
 graph TD
@@ -17,7 +17,7 @@ graph TD
     NixDevenv["**nix-devenv**\nProject shells\n(per-language toolchains · importable modules)"]
 
     Plugins["**claude-code-plugins**\nCommands · skills · agents · hooks"]
-    Docs["**docs**\nPublic-facing reference\n(docs.jacobpevans.com)"]
+    Docs["**docs**\nPublic-facing reference\n(docs.alberthmatos.com)"]
 
     PerRepo["**Per-repo CLAUDE.md**\n@AGENTS.md import"]
 
@@ -41,7 +41,7 @@ graph TD
 Source: [`docs/assets/ecosystem.mmd`](assets/ecosystem.mmd)
 
 Canonical "what lives where" rule:
-[`docs.jacobpevans.com/ai-development/repo-boundaries`](https://docs.jacobpevans.com/ai-development/repo-boundaries).
+[`docs.alberthmatos.com/ai-development/repo-boundaries`](https://docs.alberthmatos.com/ai-development/repo-boundaries).
 
 ---
 

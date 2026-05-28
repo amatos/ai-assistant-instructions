@@ -7,7 +7,7 @@ Branch protection rules reference the **Merge Gate** check (see below).
 
 ```text
 # To enable on a fork or new clone:
-git clone https://github.com/JacobPEvans/ai-assistant-instructions.git
+git clone https://github.com/amatos/ai-assistant-instructions.git
 # (workflows activate on next push to GitHub)
 ```
 

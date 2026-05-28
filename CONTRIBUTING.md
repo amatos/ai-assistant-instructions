@@ -14,7 +14,7 @@ First off, thanks for considering contributing to this project. It's just me her
 
 For more details, see the `/refresh-repo`, `/sync-main`, and `/troubleshoot-worktree`
 commands in the `git-workflows` plugin at
-[JacobPEvans/claude-code-plugins](https://github.com/JacobPEvans/claude-code-plugins).
+[amatos/claude-code-plugins](https://github.com/amatos/claude-code-plugins).
 
 That's it. I'm not picky.
 

@@ -1,6 +1,6 @@
 ---
 name: git-signing
-description: Where each AI execution context gets its commit signing identity in JacobPEvans repos. Every commit must be signed; required_signatures is enforced org-wide.
+description: Where each AI execution context gets its commit signing identity in amatos repos. Every commit must be signed; required_signatures is enforced org-wide.
 paths:
   - ".github/workflows/**"
   - "**/*.prompt.md"
@@ -17,10 +17,10 @@ making it.
 
 | Context | Identity | Auth | Signing path |
 | --- | --- | --- | --- |
-| Local Mac | `JacobPEvans` | local user | GPG (key `31652F22BF6AC286`); nix-home reads identity from `$XDG_CONFIG_HOME/nix-home/local.nix` |
-| GitHub Actions — deterministic (snake, 3d-contrib, peter-evans/create-pull-request, release-please) | `JacobPEvans-github-actions[bot]` | default `GITHUB_TOKEN` | web-flow via the action's Contents API call |
-| GitHub Actions — AI workflows | `JacobPEvans-claude[bot]` | `JacobPEvans-claude` App installation token (`actions/create-github-app-token@v2`) | web-flow via `anthropics/claude-code-action@v1` with `use_commit_signing: true` and `github_token` set to the App token |
-| Native cloud-routine workflows (claude-code-routines) | `JacobPEvans-claude[bot]` | same App installation token as above | same Contents API path; routine bodies run inside a regular GHA workflow now (not the Anthropic Cloud Routines sandbox, which can't mint App-class tokens) |
+| Local Mac | `amatos` | local user | GPG (key `31652F22BF6AC286`); nix-home reads identity from `$XDG_CONFIG_HOME/nix-home/local.nix` |
+| GitHub Actions — deterministic (snake, 3d-contrib, peter-evans/create-pull-request, release-please) | `amatos-github-actions[bot]` | default `GITHUB_TOKEN` | web-flow via the action's Contents API call |
+| GitHub Actions — AI workflows | `amatos-claude[bot]` | `amatos-claude` App installation token (`actions/create-github-app-token@v2`) | web-flow via `anthropics/claude-code-action@v1` with `use_commit_signing: true` and `github_token` set to the App token |
+| Native cloud-routine workflows (claude-code-routines) | `amatos-claude[bot]` | same App installation token as above | same Contents API path; routine bodies run inside a regular GHA workflow now (not the Anthropic Cloud Routines sandbox, which can't mint App-class tokens) |
 | GitHub bots (Renovate, release-please releases, dependabot) | the bot's GitHub identity | managed by GitHub | web-flow |
 
 Verification for any commit: `gh api repos/<owner>/<repo>/commits/<sha>
@@ -30,15 +30,15 @@ Verification for any commit: `gh api repos/<owner>/<repo>/commits/<sha>
 
 ## AI workflow App-token pattern
 
-Every reusable AI workflow in `JacobPEvans/ai-workflows` mints a
-`JacobPEvans-claude` installation token immediately before calling
+Every reusable AI workflow in `amatos/ai-workflows` mints a
+`amatos-claude` installation token immediately before calling
 `anthropics/claude-code-action@v1`, then hands the token in as
 `github_token`. The action's `use_commit_signing: true` sends edits through
 the Contents API, which web-flow-signs every commit and attributes it to
 whichever bot owns the token.
 
 ```yaml
-- name: Mint JacobPEvans-claude installation token
+- name: Mint amatos-claude installation token
   id: app-token
   uses: actions/create-github-app-token@v2
   with:
@@ -60,7 +60,7 @@ whichever bot owns the token.
 Consumers don't need to import the App credentials themselves — `secrets-sync`
 distributes `vars.GH_APP_CLAUDE_BOT_ID` and `secrets.GH_APP_CLAUDE_BOT_PRIVATE_KEY`
 to every repo in the `*github_app_repos` set. Adding a new consumer repo:
-add it to that anchor in `JacobPEvans/secrets-sync/secrets-config.yml` and
+add it to that anchor in `amatos/secrets-sync/secrets-config.yml` and
 re-run the distribution workflow.
 
 The AI never constructs Contents API payloads itself. It edits files
@@ -76,7 +76,7 @@ through the Contents API rather than runner-side `git commit`.
 
 | Producer | Action | Notes |
 | --- | --- | --- |
-| `JacobPEvans/JacobPEvans` snake / 3d-contrib | `peter-evans/create-pull-request@v8` with `sign-commits: true`, then `gh pr merge --squash` | The action wraps the Contents API for arbitrary file updates |
+| `amatos/amatos` snake / 3d-contrib | `peter-evans/create-pull-request@v8` with `sign-commits: true`, then `gh pr merge --squash` | The action wraps the Contents API for arbitrary file updates |
 | Release commits (release-please) | `googleapis/release-please-action@v5` | Native web-flow signing |
 | Built-in commit modes | e.g. `lowlighter/metrics` with `output_action: commit` | Action handles signing itself |
 
@@ -93,13 +93,13 @@ push time.
 ## Canonical sources (single source of truth, link don't duplicate)
 
 - Architecture: this rule.
-- Cloud-routine operator setup: `docs/CLOUD_ROUTINES_AUTH.md` in `JacobPEvans/claude-code-routines`.
+- Cloud-routine operator setup: `docs/CLOUD_ROUTINES_AUTH.md` in `amatos/claude-code-routines`.
 - Local Mac identity values: `$XDG_CONFIG_HOME/nix-home/local.nix` (gitignored, out-of-tree).
 - AI-action App-token pattern: the reusable workflows in
-  `JacobPEvans/ai-workflows/.github/workflows/` (issue-resolver, ci-fix,
+  `amatos/ai-workflows/.github/workflows/` (issue-resolver, ci-fix,
   code-simplifier, post-merge-tests, post-merge-docs-review, final-pr-review).
-- Native cloud-routine pattern: `JacobPEvans/claude-code-routines/.github/workflows/issue-solver.yml`.
-- App credential distribution: `secrets:` block in `JacobPEvans/secrets-sync/secrets-config.yml` (`GH_APP_CLAUDE_BOT_PRIVATE_KEY`, `GH_APP_CLAUDE_BOT_ID`).
+- Native cloud-routine pattern: `amatos/claude-code-routines/.github/workflows/issue-solver.yml`.
+- App credential distribution: `secrets:` block in `amatos/secrets-sync/secrets-config.yml` (`GH_APP_CLAUDE_BOT_PRIVATE_KEY`, `GH_APP_CLAUDE_BOT_ID`).
 
 If you're about to copy-paste signing prose into another file, link here instead.
 
@@ -107,8 +107,8 @@ If you're about to copy-paste signing prose into another file, link here instead
 
 Pick a real identity (App, user, or bot — never anonymous). Decide auth:
 
-- App installation token (`actions/create-github-app-token@v2`) when commits must be attributed to `JacobPEvans-claude[bot]`.
-- Default `GITHUB_TOKEN` when commits should be attributed to `JacobPEvans-github-actions[bot]`.
+- App installation token (`actions/create-github-app-token@v2`) when commits must be attributed to `amatos-claude[bot]`.
+- Default `GITHUB_TOKEN` when commits should be attributed to `amatos-github-actions[bot]`.
 - GPG/SSH-on-runner only when a workflow truly needs `git commit` on the
   runner (rebase, cherry-pick, generated patches that don't fit the
   Contents API) — document the exception inline.

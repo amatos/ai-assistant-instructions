@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       commit_sha:
-        description: 'Commit SHA to review'
+        description: "Commit SHA to review"
         required: false
         type: string
   # --- DISABLED AUTOMATIC TRIGGERS (restore by uncommenting) ---
@@ -39,7 +39,7 @@ jobs:
 
   review:
     if: github.event_name == 'workflow_dispatch'
-    uses: JacobPEvans/ai-workflows/.github/workflows/post-merge-tests.yml@main
+    uses: amatos/ai-workflows/.github/workflows/post-merge-tests.yml@main
     with:
       commit_sha: ${{ inputs.commit_sha || github.sha }}
     secrets: inherit

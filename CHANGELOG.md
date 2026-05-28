@@ -1,6 +1,12 @@
 # Changelog
 
-## [1.14.1](https://github.com/JacobPEvans/ai-assistant-instructions/compare/v1.14.0...v1.14.1) (2026-05-21)
+## [1.14.1.1](https://github.com/amatos/ai-assistant-instructions/compare/v1.14.1...v1.14.1.1) (2026-05-28)
+
+
+### Chores
+Forked from `amatos/ai-assistant-instructions`. All changes are applied to `amatos/ai-assistant-instructions`.
+
+## [1.14.1](https://github.com/amatos/ai-assistant-instructions/compare/v1.14.0...v1.14.1) (2026-05-21)
 
 
 ### Bug Fixes

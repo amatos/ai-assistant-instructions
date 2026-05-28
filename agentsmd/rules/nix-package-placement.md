@@ -59,8 +59,8 @@ nix run nixpkgs#mermaid-cli -- -i input.mmd -o output.svg
 nix run nixpkgs#python3Packages.grip -- README.md
 
 # Enter a project shell with tools available:
-nix develop github:JacobPEvans/nix-devenv?dir=shells/ansible
-nix develop github:JacobPEvans/nix-devenv?dir=shells/kubernetes
+nix develop github:amatos/nix-devenv?dir=shells/ansible
+nix develop github:amatos/nix-devenv?dir=shells/kubernetes
 
 # Use uvx for Python CLIs (preferred over pipx in Nix):
 uvx aider-chat

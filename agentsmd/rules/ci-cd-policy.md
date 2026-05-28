@@ -40,22 +40,22 @@ If a correction is needed, create a new release rather than changing the existin
   - Reserve `feat:` for genuinely new capabilities, integrations, or significant
     behavioral changes.
 - Templates and reusable workflows live in
-  [JacobPEvans/.github](https://github.com/JacobPEvans/.github).
+  [amatos/.github](https://github.com/amatos/.github).
 
 ## Dependency Versioning
 
-- **Self-references (JacobPEvans/\*)**: Use `@main` or a major version tag —
+- **Self-references (amatos/\*)**: Use `@main` or a major version tag —
   never SHA or minor/patch pins.
 - **Trusted external actions**: Use version tags (major like `@v6` or full
   SemVer like `@v2.3.5`).
-  Trusted orgs are listed in `JacobPEvans/.github/renovate-presets.json`.
+  Trusted orgs are listed in `amatos/.github/renovate-presets.json`.
 - **Untrusted external actions**: Use SHA commit hashes — only for orgs NOT
   in the trusted list. SHA pinning is the exception, not the default.
 
 ## Runner Choice
 
-Linux GitHub Actions jobs in JacobPEvans repos target self-hosted RunsOn
-runners deployed by [terraform-runs-on](https://github.com/JacobPEvans/terraform-runs-on).
+Linux GitHub Actions jobs in amatos repos target self-hosted RunsOn
+runners deployed by [terraform-runs-on](https://github.com/amatos/terraform-runs-on).
 The control plane is paid for whether or not it's running jobs (~$3.50/mo
 fixed App Runner + CloudWatch); workflows that stay on `ubuntu-latest`
 spend GitHub Actions minutes that don't need to be spent.
@@ -72,12 +72,12 @@ spend GitHub Actions minutes that don't need to be spent.
 The leading `runs-on=${{ github.run_id }}` segment is **required** so the
 RunsOn control plane can correlate the GitHub Actions `workflow_job`
 webhook back to the originating run — without it the job hangs in
-`queued`. Reusable workflows in `JacobPEvans/.github` accept a
+`queued`. Reusable workflows in `amatos/.github` accept a
 `runner_label` input (default `ubuntu-latest`); callers opt in by passing
 the RunsOn label string.
 
 Full label catalog, prereqs (GitHub App allowlist), rollout playbook,
 and verification steps live in
-[terraform-runs-on/docs/migration-guide.md](https://github.com/JacobPEvans/terraform-runs-on/blob/main/docs/migration-guide.md).
+[terraform-runs-on/docs/migration-guide.md](https://github.com/amatos/terraform-runs-on/blob/main/docs/migration-guide.md).
 The `/self-hosted-runners` skill (infra-standards plugin) covers
 authoring-time guidance for individual workflow edits.

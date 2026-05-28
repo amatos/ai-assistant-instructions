@@ -44,7 +44,7 @@ the gateway handles routing.
 | `consensus` | Multi-model agreement. Critical decisions. |
 
 All other PAL tools have native Claude Code equivalents.
-See [nix-ai#450](https://github.com/JacobPEvans/nix-ai/issues/450) for the audit matrix.
+See [nix-ai#450](https://github.com/amatos/nix-ai/issues/450) for the audit matrix.
 For single-model calls, use Bifrost directly.
 
 ## Local-Only Mode

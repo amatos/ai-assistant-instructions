@@ -19,18 +19,18 @@ See `secrets-policy.md` for the broader posture. The canonical cross-repo
 PUBLIC narrative — golden laws, per-tool deep dives, cross-tool flow
 diagrams, local AI isolation guarantees — lives at:
 
-- [Security overview](https://docs.jacobpevans.com/security/overview)
+- [Security overview](https://docs.alberthmatos.com/security/overview)
   — decision tree, which tool for which secret.
-- [Golden laws](https://docs.jacobpevans.com/security/golden-laws)
+- [Golden laws](https://docs.alberthmatos.com/security/golden-laws)
   — the 15 non-negotiable rules. This file is one of their implementations.
 - Per-tool deep dives:
-  [Doppler](https://docs.jacobpevans.com/security/tools/doppler),
-  [macOS Keychain](https://docs.jacobpevans.com/security/tools/macos-keychain),
-  [AWS Vault](https://docs.jacobpevans.com/security/tools/aws-vault),
-  [SOPS](https://docs.jacobpevans.com/security/tools/sops),
-  [Bitwarden](https://docs.jacobpevans.com/security/tools/bitwarden),
-  [BWS](https://docs.jacobpevans.com/security/tools/bws),
-  [OpenBao](https://docs.jacobpevans.com/security/tools/openbao).
+  [Doppler](https://docs.alberthmatos.com/security/tools/doppler),
+  [macOS Keychain](https://docs.alberthmatos.com/security/tools/macos-keychain),
+  [AWS Vault](https://docs.alberthmatos.com/security/tools/aws-vault),
+  [SOPS](https://docs.alberthmatos.com/security/tools/sops),
+  [Bitwarden](https://docs.alberthmatos.com/security/tools/bitwarden),
+  [BWS](https://docs.alberthmatos.com/security/tools/bws),
+  [OpenBao](https://docs.alberthmatos.com/security/tools/openbao).
 
 This file is the operational rules layer — load-once, apply-everywhere
 agent guidance. Keep both in sync: the docs site explains the *why*,

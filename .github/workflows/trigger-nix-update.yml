@@ -16,12 +16,12 @@ jobs:
     if: github.event_name == 'push' || (github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     permissions:
-      contents: read  # Minimal permissions
+      contents: read # Minimal permissions
 
     steps:
       - name: Trigger nix repository flake update
         run: |
-          gh api repos/JacobPEvans/nix-ai/dispatches \
+          gh api repos/amatos/nix-ai/dispatches \
             --method POST \
             --field event_type='upstream-repo-updated' \
             --field client_payload[flake_input_name]='ai-assistant-instructions' \

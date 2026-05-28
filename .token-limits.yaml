@@ -24,9 +24,10 @@ policy:
   pr_merge: hard_block
 
   # Warning threshold (warn but don't block)
-  warning_threshold: 0.9  # Warn when file is 90% of limit
+  warning_threshold: 0.9 # Warn when file is 90% of limit
+
 
 # Refactoring strategies previously listed here targeted command files
 # (resolve-pr-threads, delegate-to-ai, respond-all-prs, auto-maintain) that
 # have been decommissioned from this repo. Commands now live in
-# JacobPEvans/claude-code-plugins; their token budgets are owned there.
+# amatos/claude-code-plugins; their token budgets are owned there.

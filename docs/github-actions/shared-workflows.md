@@ -31,7 +31,7 @@ on:
 
 jobs:
   review:
-    uses: JacobPEvans/ai-workflows/.github/workflows/claude-review.yml@main
+    uses: amatos/ai-workflows/.github/workflows/claude-review.yml@main
     secrets: inherit
 ```
 
@@ -54,7 +54,7 @@ This repo uses several local reusable workflows orchestrated by `ci-gate.yml`:
 - [GitHub Reusable Workflows][reusable-workflows]
 - [Sharing workflows with your organization][sharing-workflows]
 
-[ai-workflows]: https://github.com/JacobPEvans/ai-workflows
-[.github]: https://github.com/JacobPEvans/.github
+[ai-workflows]: https://github.com/amatos/ai-workflows
+[.github]: https://github.com/amatos/.github
 [reusable-workflows]: https://docs.github.com/en/actions/using-workflows/reusing-workflows
 [sharing-workflows]: https://docs.github.com/en/actions/administering-github-actions/sharing-workflows-secrets-and-runners-with-your-organization

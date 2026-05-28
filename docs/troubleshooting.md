@@ -92,7 +92,7 @@ See AGENTS.md "Git Workflow Patterns" section for worktree requirements and trou
 
 ## Getting Help
 
-- 🐛 [Open an Issue](https://github.com/JacobPEvans/ai-assistant-instructions/issues)
+- 🐛 [Open an Issue](https://github.com/amatos/ai-assistant-instructions/issues)
 - 📖 [Read the Main README](../README.md)
 - 🔒 [Security Issues](../SECURITY.md)
 

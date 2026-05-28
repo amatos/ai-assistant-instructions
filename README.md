@@ -3,7 +3,7 @@
 > Teaching AI assistants how to help you better. Yes, it's AI instructions written with AI assistance. We've come full circle.
 >
 > **Scope**: Commands, skills, agents, and hooks have been migrated to
-> [JacobPEvans/claude-code-plugins](https://github.com/JacobPEvans/claude-code-plugins)
+> [amatos/claude-code-plugins](https://github.com/amatos/claude-code-plugins)
 > and are delivered as portable plugins. This repository now maintains the generic pieces
 > that aren't plugin-delivered: the canonical `AGENTS.md` / `CLAUDE.md` / `GEMINI.md`
 > configuration, the auto-loaded rules in `agentsmd/rules/`, the 5-step development
@@ -24,9 +24,9 @@ Think of it as a style guide, but for your AI pair programmer.
 ### Repo boundaries
 
 The AI configuration layer is split across three repositories. This repo owns the rules.
-[`claude-code-plugins`](https://github.com/JacobPEvans/claude-code-plugins) owns commands, skills, agents, and hooks.
-[`docs`](https://github.com/JacobPEvans/docs) owns the public-facing reference site at
-[`docs.jacobpevans.com`](https://docs.jacobpevans.com).
+[`claude-code-plugins`](https://github.com/amatos/claude-code-plugins) owns commands, skills, agents, and hooks.
+[`docs`](https://github.com/amatos/docs) owns the public-facing reference site at
+[`docs.matos.cc`](https://docs.matos.cc).
 
 ```mermaid
 graph LR
@@ -44,7 +44,7 @@ graph LR
     style Docs fill:#e8d4ff,stroke:#8a4ad9,color:#000
 ```
 
-Full rule, decision table, and update workflow: [`docs.jacobpevans.com/ai-development/repo-boundaries`](https://docs.jacobpevans.com/ai-development/repo-boundaries).
+Full rule, decision table, and update workflow: [`docs.matos.cc/ai-development/repo-boundaries`](https://docs.matos.cc/ai-development/repo-boundaries).
 
 For the broader Nix ecosystem context and session lifecycle diagrams, see [`docs/diagrams.md`](docs/diagrams.md).
 
@@ -59,7 +59,7 @@ For the broader Nix ecosystem context and session lifecycle diagrams, see [`docs
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/JacobPEvans/ai-assistant-instructions.git
+git clone https://github.com/amatos/ai-assistant-instructions.git
 
 # 2. Copy AGENTS.md into your project
 cp ai-assistant-instructions/AGENTS.md your-project/
@@ -73,9 +73,9 @@ cd your-project
 ln -sf AGENTS.md CLAUDE.md
 ln -sf AGENTS.md GEMINI.md
 
-# 4. Install the plugins from JacobPEvans/claude-code-plugins
+# 4. Install the plugins from amatos/claude-code-plugins
 #    (commands, skills, agents, and hooks live there, not here)
-claude marketplace add JacobPEvans/claude-code-plugins
+claude marketplace add amatos/claude-code-plugins
 claude plugin install git-workflows github-workflows git-standards
 
 # 5. Verify setup
@@ -89,7 +89,7 @@ Or just browse the [documentation](docs/) and cherry-pick what you need.
 Once installed, the AI assistants read `CLAUDE.md` / `AGENTS.md` / `GEMINI.md`
 automatically at session start, and the auto-loaded rules in `agentsmd/rules/`
 are pulled in for every session. Plugin-delivered commands and skills from
-[JacobPEvans/claude-code-plugins](https://github.com/JacobPEvans/claude-code-plugins)
+[amatos/claude-code-plugins](https://github.com/amatos/claude-code-plugins)
 are invoked via slash commands (`/refresh-repo`, `/finalize-pr`, `/ship`, etc.)
 or directly by name.
 
@@ -115,7 +115,7 @@ routing decisions, and on-demand standards.
 ```
 
 Claude-Code plugins (commands, skills, agents, hooks) live in
-[JacobPEvans/claude-code-plugins](https://github.com/JacobPEvans/claude-code-plugins)
+[amatos/claude-code-plugins](https://github.com/amatos/claude-code-plugins)
 and are consumed via the `git-workflows`, `github-workflows`, `git-standards`,
 `code-standards`, `infra-standards`, `project-standards`, `ai-delegation`,
 `config-management`, `content-guards`, `git-guards`, `script-guards`,
@@ -145,7 +145,7 @@ Full details in [`agentsmd/workflows/`](agentsmd/workflows/).
 
 All slash commands, skills, agents, and hooks previously listed in this README
 now ship as plugins in
-[JacobPEvans/claude-code-plugins](https://github.com/JacobPEvans/claude-code-plugins).
+[amatos/claude-code-plugins](https://github.com/amatos/claude-code-plugins).
 Install the marketplace and enable the plugins you need:
 
 | Plugin | Provides |
@@ -180,7 +180,7 @@ The documentation covers:
 Browse [`agentsmd/rules/`](agentsmd/rules/) and [`agentsmd/docs/`](agentsmd/docs/).
 
 **Advanced**: This repo integrates with
-[nix-config](https://github.com/JacobPEvans/nix) for unified permission
+[nix-config](https://github.com/amatos/nix) for unified permission
 management across AI tools. This is **optional** - the basic setup works
 standalone. See [`agentsmd/docs/permission-system.md`](agentsmd/docs/permission-system.md)
 for details.
@@ -189,7 +189,7 @@ for details.
 
 - [Codex Quick Start](docs/codex-quick-start.md) - repo analysis, prompt patterns, and Codex parity backlog
 - 📖 [Documentation Home](docs/) - Getting started guides and references
-- 🐛 [Issues](https://github.com/JacobPEvans/ai-assistant-instructions/issues) - Report bugs or request features
+- 🐛 [Issues](https://github.com/amatos/ai-assistant-instructions/issues) - Report bugs or request features
 
 ## Contributing
 
@@ -206,11 +206,13 @@ Found a vulnerability? Please report it responsibly. See [SECURITY.md](SECURITY.
 
 ---
 
+Portions of this project are derived from [amatos/ai-assistant-instructions](https://github.com/amatos/ai-assistant-instructions), which is licensed under the Apache 2.0 License.
+
 *Built by a human, refined by AI, used by both.*
 
 [license-badge]: https://img.shields.io/badge/License-Apache_2.0-blue.svg
 [license-url]: LICENSE
-[markdownlint-badge]: https://github.com/JacobPEvans/ai-assistant-instructions/actions/workflows/markdownlint.yml/badge.svg
-[markdownlint-url]: https://github.com/JacobPEvans/ai-assistant-instructions/actions/workflows/markdownlint.yml
+[markdownlint-badge]: https://github.com/amatos/ai-assistant-instructions/actions/workflows/markdownlint.yml/badge.svg
+[markdownlint-url]: https://github.com/amatos/ai-assistant-instructions/actions/workflows/markdownlint.yml
 [precommit-badge]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit
 [precommit-url]: https://github.com/pre-commit/pre-commit

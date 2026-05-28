@@ -2,10 +2,10 @@
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Default owner for everything
-* @JacobPEvans
+* @amatos
 
 # Specific areas
-agentsmd/ @JacobPEvans
-.github/ @JacobPEvans
-scripts/ @JacobPEvans
-.claude/ @JacobPEvans
+agentsmd/ @amatos
+.github/ @amatos
+scripts/ @amatos
+.claude/ @amatos

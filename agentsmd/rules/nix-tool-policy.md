@@ -63,7 +63,7 @@ The Nix dev shell pattern avoids this by providing tools through the flake lockf
 
 ## Repos Using This Pattern
 
-All JacobPEvans repositories with `flake.nix` + `.envrc`, including:
+All amatos repositories with `flake.nix` + `.envrc`, including:
 
 - ansible-proxmox, ansible-proxmox-apps, ansible-splunk
 - terraform-proxmox, terraform-aws, terraform-aws-bedrock
