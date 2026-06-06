@@ -6,7 +6,7 @@ description: AI voice and autonomy defaults — direct feedback, claim small fix
 # Voice and Autonomy
 
 Commit/PR subject conventions (no-emoji, Conventional Commits, `feat:` vs `fix:`)
-live at [docs.jacobpevans.com/conventions/commit-conventions](https://docs.jacobpevans.com/conventions/commit-conventions).
+live at [docs.alberthmatos.com/conventions/commit-conventions](https://docs.alberthmatos.com/conventions/commit-conventions).
 That page is the canonical source — this file covers AI behavior the docs site does not.
 
 ## Communication

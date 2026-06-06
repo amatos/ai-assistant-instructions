@@ -9,7 +9,7 @@ paths:
 # Shared Workflow Org References
 
 GitHub Actions reusable-workflow and action `uses:` clauses are the one place the
-"don't rewrite `JacobPEvans/*` on sight — the redirect holds" rule does NOT apply.
+"don't rewrite `amatos/*` on sight — the redirect holds" rule does NOT apply.
 
 Two hard GitHub constraints:
 
@@ -20,27 +20,27 @@ Two hard GitHub constraints:
 Consequence: when a shared-CI repo changes orgs, every consumer's `uses:` fails at parse time
 (the run shows zero jobs and "workflow was not found"). There is no runtime variable that prevents this.
 
-## Canonical home: dryvist
+## Canonical home: amatos
 
-**dryvist is the canonical home for everything dryvist uses.** Anything a dryvist
-repo consumes — reusable workflows, presets, policies — belongs under `dryvist/*`.
-`JacobPEvans-personal/*` may depend on `dryvist/*`; `dryvist/*` must **never** depend
-on `JacobPEvans-personal/*`. When a shared workflow is used by dryvist, its home is
-`dryvist/.github` (or the relevant `dryvist/*` repo), not the personal account.
+**amatos is the canonical home for everything amatos uses.** Anything a amatos
+repo consumes — reusable workflows, presets, policies — belongs under `amatos/*`.
+`amatos-personal/*` may depend on `amatos/*`; `amatos/*` must **never** depend
+on `amatos-personal/*`. When a shared workflow is used by amatos, its home is
+`amatos/.github` (or the relevant `amatos/*` repo), not the personal account.
 
 Because `uses:` does not follow redirects, reference each workflow by its literal
 **current** owner from the table below until a pending relocation actually lands.
 
 | Shared-CI workflow set | Current home | Status |
 | --- | --- | --- |
-| `ai-workflows` reusable workflows | `dryvist/ai-workflows` | canonical |
-| Nix reusable workflows (`_nix-validate.yml`, `_nix-build.yml`) | `dryvist/.github` | canonical |
-| Release-please (`_release-please.yml`) | `dryvist/.github` | canonical — org-native (dryvist release App, major-bump block, auto-merge) |
-| `_markdown-lint`, `_file-size`, `_osv-scan`, `_ci-gate`, … | `JacobPEvans-personal/.github` | **pending relocation to `dryvist/.github`** |
+| `ai-workflows` reusable workflows | `amatos/ai-workflows` | canonical |
+| Nix reusable workflows (`_nix-validate.yml`, `_nix-build.yml`) | `amatos/.github` | canonical |
+| Release-please (`_release-please.yml`) | `amatos/.github` | canonical — org-native (amatos release App, major-bump block, auto-merge) |
+| `_markdown-lint`, `_file-size`, `_osv-scan`, `_ci-gate`, … | `amatos-personal/.github` | **pending relocation to `amatos/.github`** |
 
-Nix and release-please were deliberately relocated to `dryvist/.github` (the org owns
+Nix and release-please were deliberately relocated to `amatos/.github` (the org owns
 its own CI). The remaining non-Nix `.github` workflows are still in
-`JacobPEvans-personal/.github` **only until they are moved the same way** — that is a
+`amatos-personal/.github` **only until they are moved the same way** — that is a
 transitional home, not a permanent one. Repoint consumers via the sweep below as each
 moves; do not move any back to the personal account.
 
@@ -54,7 +54,7 @@ moves; do not move any back to the personal account.
 
 ## If a shared-CI repo must move anyway (sweep)
 
-1. `gh search code 'OLD_OWNER/REPO' --owner dryvist` (and `--owner JacobPEvans-personal`), filtered to `.github/workflows/*.yml`.
+1. `gh search code 'OLD_OWNER/REPO' --owner amatos` (and `--owner amatos-personal`), filtered to `.github/workflows/*.yml`.
 2. Per consumer repo: swap only the `uses:` owner segment, preserving path and `@ref`; one PR per repo.
 3. Skip `*.lock.yml`, `{{#import}}`, and docs.
-4. Token tiers: dryvist repos → DRYVIST; JacobPEvans-personal repos → PRIVATE.
+4. Token tiers: amatos repos → amatos; amatos-personal repos → PRIVATE.

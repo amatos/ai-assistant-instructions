@@ -64,7 +64,7 @@ modules — the name signals intent to the reader, not behavior.
 ```
 
 Scaffold a new repo with this layout via
-`nix flake init -t github:JacobPEvans/nix-devenv#with-hooks`.
+`nix flake init -t github:amatos/nix-devenv#with-hooks`.
 
 ## Consumer pattern (non-Nix path)
 

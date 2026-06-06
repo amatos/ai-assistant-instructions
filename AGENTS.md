@@ -78,7 +78,7 @@ Plugins, commands, skills, agents, hooks: [amatos/claude-code-plugins](https://g
 
 ## No Scripts
 
-See [docs.jacobpevans.com/conventions/no-scripts](https://docs.jacobpevans.com/conventions/no-scripts).
+See [docs.alberthmatos.com/conventions/no-scripts](https://docs.alberthmatos.com/conventions/no-scripts).
 Iron law: search first, script as last resort, never inline.
 
 ## Starting any change
@@ -113,7 +113,7 @@ in the same session — never leave it to a follow-up:
   `docs/ai-development/ai-assistant-instructions.mdx`.
 - Diagram edits → keep inline mermaid blocks and any `docs/assets/*.mmd` sources in lockstep
   per [docs.alberthmatos.com/conventions/diagramming](https://docs.alberthmatos.com/conventions/diagramming).
-- One PR per repo. Cross-link via `Refs: JacobPEvans/<repo>#N` in the PR body.
+- One PR per repo. Cross-link via `Refs: amatos/<repo>#N` in the PR body.
 - Per-repo docs (the local `README.md` and `docs/` inside any source repo) stay in that repo.
   Private/user-only content never goes in `amatos/docs`.
 
