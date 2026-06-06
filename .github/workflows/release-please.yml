@@ -13,4 +13,4 @@ jobs:
       pull-requests: write
     uses: amatos/.github/.github/workflows/_release-please.yml@main
     secrets:
-      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      GH_ACTION_RELEASE_PLEASE_PRIVATE_KEY: ${{ secrets.GH_ACTION_RELEASE_PLEASE_PRIVATE_KEY }}
